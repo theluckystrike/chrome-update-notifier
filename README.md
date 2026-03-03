@@ -1,12 +1,36 @@
-# chrome-update-notifier — Version Detection and Migrations
-> **Built by [Zovo](https://zovo.one)** | `npm i chrome-update-notifier`
+# chrome-update-notifier
 
-Install/update listeners, version-ordered migrations, first run detection, and install age tracking.
+Notify users about extension updates in Chrome.
 
-```typescript
-import { UpdateNotifier } from 'chrome-update-notifier';
-const notifier = new UpdateNotifier();
-notifier.addMigration('1.2.0', async () => { /* migrate data */ });
-notifier.listen({ onInstall: (v) => showWelcome(v), onUpdate: (prev, cur) => showChangelog(prev, cur) });
+## Overview
+
+chrome-update-notifier provides utilities to check for updates and notify users.
+
+## Installation
+
+```bash
+npm install chrome-update-notifier
 ```
-MIT License
+
+## Usage
+
+```javascript
+import { UpdateNotifier } from 'chrome-update-notifier';
+
+const notifier = new UpdateNotifier();
+
+notifier.on('update', (info) => {
+  console.log('Update available:', info.version);
+});
+
+notifier.check();
+```
+
+## API
+
+- `check()` - Check for updates
+- `on('update', callback)` - Update available event
+
+## License
+
+MIT
