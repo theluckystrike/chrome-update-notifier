@@ -27,6 +27,7 @@
     ],
     "scripts": {
         "build": "tsc",
+        "test": "tsc --noEmit",
         "prepublishOnly": "npm run build"
     },
     "devDependencies": {
